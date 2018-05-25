@@ -1,0 +1,70 @@
+﻿@model MVCRegLogin.Models.User
+
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Login</title>
+
+    <style>
+        .field-validation-error{
+            color: red;
+        }
+    </style>
+</head>
+<body>
+    @using (Html.BeginForm("Login", "User", FormMethod.Post))
+    {
+        //this is for create form tag
+        @Html.AntiForgeryToken()      //this is for prevent CSRF attack
+        @Html.ValidationSummary(true)
+
+        if (@ViewBag.Message != null)
+        {
+            <div style="border: 1px solid red">
+                @ViewBag.Message
+            </div>
+        }
+
+
+        <table>
+            <tr>
+                <td>@Html.LabelFor(a=>a.UserName)</td>
+                <td>@Html.TextBoxFor(a=>a.UserName)</td>
+                <td>@Html.ValidationMessageFor(a=>a.UserName)</td>
+            </tr>
+
+            <tr>
+                <td>@Html.LabelFor(a=>a.Password)</td>
+                <td>@Html.PasswordFor(a=>a.Password)</td>
+                <td>@Html.ValidationMessageFor(a=>a.Password)</td>
+            </tr>
+            <tr>
+                <td colspan="2">
+                    <label class="field-validation-error"> @Html.DisplayFor(model => model.LoginErrorMessage)</label>
+                </td>
+            </tr>
+            <tr>
+                <td></td>
+                <td> <input type="submit" value="Login" /> </td>
+                <td></td>
+            </tr>
+        </table>
+    }
+
+    <div>
+        @Html.ActionLink("Register Now", "Register")
+    </div>
+</body>
+@*This below line for create javascript section*@
+<script src="~/Scripts/jquery-1.10.2.min.js"></script>
+<script src="~/Scripts/jquery.validate.min.js"></script>
+<script src="~/Scripts/jquery.validate.unobtrusive.min.js"></script>
+<script src="~/Scripts/jquery.validate.unobtrusive.js"></script>
+
+</html>

@@ -1,0 +1,31 @@
+﻿
+@{
+    Layout = null;
+    //if (Session["userID"] == null)
+    //{
+    //    Response.Redirect("~/User/Login");
+    //}
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>AfterLogin</title>
+</head>
+<body>
+
+    @if (Session["LogedUserID"] != null)
+    {
+        <text>
+           Welcome @Session["LogedUserFullname"].ToString()
+        </text>
+        <br />
+        @*<a href="@Url.Action("Logout","User")">Log Out</a>*@
+    }
+    <div>
+       
+    </div>
+</body>
+</html>
