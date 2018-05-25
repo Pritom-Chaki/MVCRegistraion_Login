@@ -55,12 +55,12 @@ namespace MVCRegLogin.Controllers
                 return RedirectToAction("Register");
             }
         }
-        //public ActionResult Logout()
-        //{
-        //    int userId = (int)Session["userID"];
-        //    Session.Abandon();
-        //    return RedirectToAction("Login", "User");
-        //}
+        public ActionResult Logout()
+        {
+            int userID = (int)Session["LogedUserID"];
+            Session.Abandon();
+            return RedirectToAction("Login", "User");
+        }
         //Register Action
         [HttpPost]
         [ValidateAntiForgeryToken]

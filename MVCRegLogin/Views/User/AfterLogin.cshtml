@@ -1,10 +1,10 @@
 ﻿
 @{
     Layout = null;
-    //if (Session["userID"] == null)
-    //{
-    //    Response.Redirect("~/User/Login");
-    //}
+    if (Session["LogedUserID"] == null)
+    {
+        Response.Redirect("~/User/Login");
+    }
 }
 
 <!DOCTYPE html>
@@ -22,7 +22,7 @@
            Welcome @Session["LogedUserFullname"].ToString()
         </text>
         <br />
-        @*<a href="@Url.Action("Logout","User")">Log Out</a>*@
+        <a href="@Url.Action("Logout","User")">Log Out</a>
     }
     <div>
        
